@@ -14,6 +14,6 @@ def get_loader(name):
     }[name]
 
 
-def get_data_path(name, config_file='config.json'):
+def get_data_path(name, config_file='D:\\Uczelnia\\magisterka\\Variational-Prototyping-Encoder\\code\\config.json'):
     data = json.load(open(config_file))
     return data[name]['data_path']

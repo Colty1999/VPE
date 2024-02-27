@@ -1,8 +1,10 @@
 import numpy as np
 import torch
 from torch.utils.data import Dataset
-import scipy.misc as m
+import imageio as m
 import random
+
+from skimage.transform import resize
 
 class gtsrbLoader(Dataset):
 
@@ -84,7 +86,7 @@ class gtsrbLoader(Dataset):
     img = img.astype(np.float64)
     img -= self.mean
     if self.img_size is not None:
-      img = m.imresize(img, (self.img_size[0], self.img_size[1]))
+      img = resize(img, (self.img_size[0], self.img_size[1]))
     # Resize scales images from 0 to 255, thus we need
     # to divide by 255.0
     img = img.astype(float) / 255.0

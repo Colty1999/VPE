@@ -1,19 +1,18 @@
 {
   "gtsrb":
   {
-    "data_path": "/JSspace/VPE/db/"
+    "data_path": "D:\\Uczelnia\\magisterka\\Variational-Prototyping-Encoder\\db\\"
   },
   "gtsrb2TT100K":
   {
-    "data_path": "/JSspace/VPE/db/"
+    "data_path": "D:\\Uczelnia\\magisterka\\Variational-Prototyping-Encoder\\db\\"
   },
   "belga2flickr":
   {
-    "data_path": "/JSspace/VPE/db/"
+    "data_path": "D:\\Uczelnia\\magisterka\\Variational-Prototyping-Encoder\\db\\"
   },
-
   "belga2toplogo":
   {
-    "data_path": "/JSspace/VPE/db/"
+    "data_path": "D:\\Uczelnia\\magisterka\\Variational-Prototyping-Encoder\\db\\"
   }
 }

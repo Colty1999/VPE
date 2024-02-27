@@ -1,10 +1,12 @@
 import numpy as np
 import torch
 from torch.utils.data import Dataset
-import scipy.misc as m
+import imageio as m
 # from augmentations import *
 # from models import get_model
 import random
+
+from skimage.transform import resize
 
 class gtsrb2TT100KLoader(Dataset):
 
@@ -37,8 +39,8 @@ class gtsrb2TT100KLoader(Dataset):
     self.mean = np.array([125.00, 125.00, 125.00]) # average intensity
 
     self.root = root
-    self.dataPath = root + exp + '/' + self.split + '_impaths_all.txt'
-    self.labelPath = root + exp + '/' + self.split + '_imclasses_all.txt'
+    self.dataPath = root + '\\' + exp + '\\' + self.split + '_impaths_all.txt'
+    self.labelPath = root + '\\' + exp + '\\' + self.split + '_imclasses_all.txt'
 
     f_data = open(self.dataPath,'r')
     f_label = open(self.labelPath,'r')
@@ -49,7 +51,7 @@ class gtsrb2TT100KLoader(Dataset):
       self.inputs.append(root+data_lines[i][0:-1])
       self.targets.append(int(label_lines[i].split()[0])) # label: [road class, wet/dry, video index]
     
-    classnamesPath = root + exp + '/' + self.split + '_classnames.txt'
+    classnamesPath = root + '\\' + exp + '\\' + self.split + '_classnames.txt'
     f_classnames = open(classnamesPath, 'r')
     data_lines = f_classnames.readlines()
     for i in range(len(data_lines)):
@@ -94,7 +96,7 @@ class gtsrb2TT100KLoader(Dataset):
     img = img.astype(np.float64)
     img -= self.mean
     if self.img_size is not None:
-      img = m.imresize(img, (self.img_size[0], self.img_size[1]))
+      img = resize(img, (self.img_size[0], self.img_size[1]))
     # Resize scales images from 0 to 255, thus we need
     # to divide by 255.0
     img = img.astype(float) / 255.0
